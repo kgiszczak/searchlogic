@@ -11,25 +11,25 @@ ActiveRecord::Schema.verbose = false
 ActiveRecord::Base.establish_connection(:adapter => "sqlite3", :dbfile => ":memory:")
 ActiveRecord::Base.configurations = true
 ActiveRecord::Schema.define(:version => 1) do
-  create_table :accounts do |t|
+  create_table :accounts, :force => true do |t|
     t.datetime  :created_at
     t.datetime  :updated_at
     t.string    :name
     t.boolean   :active
   end
 
-  create_table :user_groups do |t|
+  create_table :user_groups, :force => true do |t|
     t.datetime  :created_at      
     t.datetime  :updated_at
     t.string    :name
   end
   
-  create_table :user_groups_users, :id => false do |t|
+  create_table :user_groups_users, :id => false, :force => true do |t|
     t.integer :user_group_id
     t.integer :user_id
   end
   
-  create_table :users do |t|
+  create_table :users, :force => true do |t|
     t.datetime  :created_at      
     t.datetime  :updated_at
     t.integer   :account_id
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(:version => 1) do
     t.text      :bio
   end
 
-  create_table :orders do |t|
+  create_table :orders, :force => true do |t|
     t.datetime  :created_at      
     t.datetime  :updated_at
     t.integer   :user_id
@@ -51,14 +51,14 @@ ActiveRecord::Schema.define(:version => 1) do
     t.binary    :receipt
   end
   
-  create_table :line_items do |t|
+  create_table :line_items, :force => true do |t|
     t.datetime  :created_at      
     t.datetime  :updated_at
     t.integer   :order_id
     t.string      :name
   end
   
-  create_table :animals do |t|
+  create_table :animals, :force => true do |t|
     t.datetime  :created_at      
     t.datetime  :updated_at
     t.string   :type

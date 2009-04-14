@@ -128,6 +128,8 @@ module SearchTests
       assert_nil search.order
       assert_equal :name, search.priority_order_by
       assert_nil search.priority_order_as
+
+      assert_equal 3, search.count
     
       search.order_by = :id
       assert_equal "\"accounts\".\"name\", \"accounts\".\"id\"", search.sanitize[:order]

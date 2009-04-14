@@ -153,7 +153,7 @@ module Searchlogic
       
       def sanitize_with_ordering(searching = true)
         find_options = sanitize_without_ordering(searching)
-        unless priority_order.blank?
+        if priority_order.present? && searching
           order_parts = [priority_order, find_options[:order]].compact
           find_options[:order] = order_parts.join(", ")
         end
